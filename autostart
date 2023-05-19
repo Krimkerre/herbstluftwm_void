@@ -8,10 +8,13 @@ hc emit_hook reload
 
 # AUTOSTART #
 #-----------#
-picom --experimental-backend &
-xwallpaper --zoom $HOME/.config/herbstluftwm/keys.jpg
+sudo /usr/local/bin/dim_keyboard.sh 10 &
+picom -CGb &
+sudo /usr/local/bin/dim_keyboard.sh 10 &
+xwallpaper --zoom $HOME/.config/herbstluftwm/retro.png
 xfce4-power-manager &
 polybar -c $HOME/.config/herbstluftwm/polybar_config mainbar-herbst &
+nm-applet &
 
 # REMOVE ALL EXISTING KEYBINDINGS #
 #---------------------------------#
@@ -19,15 +22,15 @@ hc keyunbind --all
 
 # KEYBINDINGS #
 #-------------#
-Mod=Mod1    # Use alt as the main modifier
-#Mod=Mod4   # Use the super key as the main modifier
+#Mod=Mod1    # Use alt as the main modifier
+Mod=Mod4   # Use the super key as the main modifier
 
 # System controls #
 #-----------------#
-hc keybind $Mod-Shift-c spawn kitty -T logout -e herbst-logout.sh
+hc keybind $Mod-Shift-e spawn kitty -T logout -e herbst-logout.sh
 hc keybind $Mod-Control-r reload
-hc keybind $Mod-Shift-q close
-hc keybind $Mod-Shift-Return spawn "${TERMINAL:-kitty}" # 
+hc keybind $Mod-q close
+hc keybind $Mod-Return spawn "${TERMINAL:-kitty}" # 
 
 # multimedia #
 #------------#
@@ -43,16 +46,17 @@ hc keybind $Mod-Control-s spawn playerctl stop
 #---------------#
 hc keybind $Mod-Shift-i spawn kitty -T vsp2 -e vsp2
 hc keybind $Mod-Shift-d spawn kitty -T launch.sh -e launch.sh 
+hc keybind $Mod-slash spawn kitty -T launch.sh -e launch.sh 
 
 # browsers #
 #----------#
 hc keybind $Mod-Shift-a spawn firefox
+hc keybind $Mod-n spawn thunar
 
 # scratchpads #
 #-------------#
-hc keybind $Mod-Return spawn scratch scratchpad 
-hc keybind $Mod-Control-f spawn scratch FM
-hc keybind $Mod-q spawn scratch2 qutebrowser 
+hc keybind $Mod-Shift-Return spawn scratch scratchpad 
+hc keybind $Mod-Control-f spawn scratch FM 
 hc keybind $Mod-Control-Return spawn scratchpad
 
 # focusing client #
